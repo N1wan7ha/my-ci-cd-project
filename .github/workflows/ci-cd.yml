@@ -40,6 +40,17 @@ jobs:
     - name: Test coverage
       run: npm test -- --coverage
 
+    - name: Security scanning
+      run: npm audit
+
+    - name: Build performance
+      run: time npm install
+
+    - name: Bundle analysis
+      run: npx webpack-bundle-analyzer
+
+      
+
   deploy:
     name: Deploy to Railway
     runs-on: ubuntu-latest

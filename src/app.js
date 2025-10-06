@@ -48,6 +48,15 @@ app.get('/api/info', (req, res) => {
   });
 });
 
+// Add monitoring endpoints
+app.get('/metrics', (req, res) => {
+  res.json({
+    memory: process.memoryUsage(),
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
+  });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error('Error:', err.stack);
